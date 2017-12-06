@@ -13,10 +13,10 @@ import XMPPFramework
 public struct ProviderItem{
     
     /// Message parsed from provider
-    var node        : XMPPMessage
+    public var node        : XMPPMessage
     
     /// Founded extensions
-    var extensions  : [XMPPProviderExtension]
+    public var extensions  : [XMPPProviderExtension]
     
 }
 

@@ -67,7 +67,7 @@ open class XMPPProviderManager : NSObject{
     ///
     /// - Parameter message: XMPPMessage
     /// - Returns: [XMPPProviderExtension]
-    public func getExtensions(fromMessage message : XMPPMessage, type : XMPPProviderExtension.Type? = nil) -> [XMPPProviderExtension]{
+    open func getExtensions(fromMessage message : XMPPMessage, type : XMPPProviderExtension.Type? = nil) -> [XMPPProviderExtension]{
      
         var extensions = [XMPPProviderExtension]()
         
@@ -98,7 +98,7 @@ open class XMPPProviderManager : NSObject{
     ///   - attributes: [String : String?]
     ///   - node: XMPPMessage
     /// - Throws
-    static func find(attributes : inout [String : String?], inNode node : XMPPMessage) throws {
+    static open func find(attributes : inout [String : String?], inNode node : XMPPMessage) throws {
         
         for (key,_) in attributes{
             

@@ -17,13 +17,65 @@ extension XMPPProviderManager : XMPPStreamDelegate {
         /// Array to store parsed extensions
         var parsedExt : [XMPPProviderExtension] = [XMPPProviderExtension]()
         
+        /// For pub sub check for message inside items
+        if XMPPPubSub.isPubSubMessage(message){
+            
+            if let event = message.forName("event"), let items: DDXMLElement = event.forName("items"), let children = items.children {
+
+                /// Find <message> node inside event -> items -> item
+                for child in children{
+                    if let messageChild = child.children?.filter({ (childnode) -> Bool in
+                        return childnode.name == "message"
+                    }){
+                        for ch in messageChild{
+                            if let ex = getExt(fromMessage: XMPPMessage.init(from: ch as! DDXMLElement)){
+                                ex.forEach({ (_ext) in
+                                    _ext.providerNode = XMPPMessage.init(from: items)
+                                    parsedExt.append(_ext)
+                                })
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }else{
+            
+            if let ex = getExt(fromMessage: message){
+                ex.forEach({ (_ext) in
+                    parsedExt.append(_ext)
+                })
+            }
+            
+        }
+        
+        /// If we found extensions, notifies the delegate
+        if parsedExt.count > 0{
+            delegateQueue?.async {
+                self.delegage?.xmppProviderManager(self, didParse: ProviderItem(node: message, extensions: parsedExt))
+            }
+        }
+        
+    }
+    
+    /// Find all extension in passed message
+    ///
+    /// - Parameter message: XMPPMessage
+    /// - Returns: XMPPProviderExtension
+    fileprivate func getExt(fromMessage message : XMPPMessage) -> [XMPPProviderExtension]?{
+        
         /// Check if we are receiving an error, we do not want to parse it
         guard !message.isErrorMessage else{
-            return
+            return nil
         }
+        
+        /// Array of extesions
+        var foundExt = [XMPPProviderExtension]()
         
         /// Iterate all children of <message> node and try to parse registered extensions
         if let children = message.children{
+            
+            
             for child in children{
                 
                 /// Get extension if exists
@@ -41,17 +93,15 @@ extension XMPPProviderManager : XMPPStreamDelegate {
                     }
                     
                     extesionParsed.providerNode = elementChild
-                    parsedExt.append(extesionParsed)
+                    
+                    foundExt.append(extesionParsed)
+                    
                 }
             }
+            
         }
         
-        /// If we found extensions, notifies the delegate
-        if parsedExt.count > 0{
-            delegateQueue?.async {
-                self.delegage?.xmppProviderManager(self, didParse: ProviderItem(node: message, extensions: parsedExt))
-            }
-        }
+        return foundExt
         
     }
     

@@ -71,23 +71,29 @@ open class XMPPProviderManager : NSObject{
      
         var extensions = [XMPPProviderExtension]()
         
-        if let children = message.children{
-            for child in children{
-                
-                /// Check all type or only required type
-                let ext = (type != nil) ? _extensions.first{ (type) -> Bool in
-                    return type.nodename == child.name! || (type.aliasName != nil && type.aliasName!.contains(child.name!))
-                } : type
-                
-                let node = XMPPMessage.init(from: child as! DDXMLElement)
-                if let extesionParsed = ext?.parse(node: node, parentNode: message){
-                    extesionParsed.providerNode = node
-                    extensions.append(extesionParsed)
+        for ext in _extensions.filter({ (ext) -> Bool in
+            guard let type = type else { return true }
+            return ext == type
+        }){
+            
+            /// Build array of node name and aliases
+            var name = [ext.nodename]
+            ext.aliasName?.forEach({ (alias) in
+                name.append(alias)
+            })
+            /// Iterate names and look for extensions
+            for nm in name{
+                for element in message.elements(forName: nm){
+                    let mes = XMPPMessage(from: element)
+                    if let extesionParsed = ext.parse(node: mes, parentNode: message){
+                        extesionParsed.providerNode = mes
+                        extensions.append(extesionParsed)
+                    }
                 }
-                
             }
+            
         }
-        
+
         return extensions
         
     }
@@ -105,7 +111,7 @@ open class XMPPProviderManager : NSObject{
             if let value: String = node.attribute(forName: key)?.stringValue {
                 attributes[key] = value
             }else{
-                throw CustomError.RuntimeError("Missing attribute '\(key)' while parsing <media> node")
+                throw CustomError.RuntimeError("Missing attribute '\(key)' while parsing <\(node.name!)> node")
             }
             
         }

@@ -27,8 +27,17 @@ extension XMPPProviderManager : XMPPStreamDelegate {
                     if let messageChild = child.children?.filter({ (childnode) -> Bool in
                         return childnode.name == "message"
                     }){
+                        /// Iterate all children
                         for ch in messageChild{
-                            if let ex = getExt(fromMessage: XMPPMessage.init(from: ch as! DDXMLElement)){
+                            
+                            /// Build message
+                            let msg = XMPPMessage.init(from: ch as! DDXMLElement)
+                            /// Make sure i'm not sender
+                            guard !isMine(message: msg, sender: sender) else{
+                                return
+                            }
+                            
+                            if let ex = getExt(fromMessage: msg){
                                 ex.forEach({ (_ext) in
                                     _ext.providerNode = XMPPMessage.init(from: items)
                                     parsedExt.append(_ext)
@@ -40,6 +49,11 @@ extension XMPPProviderManager : XMPPStreamDelegate {
             }
             
         }else{
+            
+            /// Make sure i'm not sender
+            guard !isMine(message: message, sender: sender) else{
+                return
+            }
             
             if let ex = getExt(fromMessage: message){
                 ex.forEach({ (_ext) in
@@ -56,6 +70,21 @@ extension XMPPProviderManager : XMPPStreamDelegate {
             }
         }
         
+    }
+    
+    /// Check if i am a sender of message, usefull for pubsub message that are sent to sender
+    ///
+    /// - Parameters:
+    ///   - message: XMPPMessage
+    ///   - sender: XMPPStream
+    /// - Returns: Bool
+    fileprivate func isMine(message:XMPPMessage, sender : XMPPStream) -> Bool{
+        
+        guard let my = sender.myJID?.user, let send = message.from?.user else {
+            return false
+        }
+        
+        return my == send
     }
     
     /// Find all extension in passed message

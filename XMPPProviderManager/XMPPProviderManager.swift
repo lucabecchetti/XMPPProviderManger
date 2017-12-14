@@ -15,10 +15,10 @@ open class XMPPProviderManager : NSObject{
     private let TAG     : String = "[XMPPProviderManager]"
     
     /// Delegate for provider
-    public var delegage : XMPPProviderManagerDelegate?
+    public var delegate : XMPPProviderManagerDelegate?
     
     /// Quueue dispatch for delegate
-    internal var delegateQueue : DispatchQueue?
+    public var delegateQueue : DispatchQueue?
     
     /// Extensions queue
     internal var _extensions : [XMPPProviderExtension.Type] = [XMPPProviderExtension.Type]()

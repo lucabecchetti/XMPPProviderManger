@@ -8,18 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		B0753E212B4D921328812E4E /* Pods_XMPPProviderManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05520A675D3F663920F1D2D5 /* Pods_XMPPProviderManager.framework */; };
+		B19DAD771FE2942B005C247A /* XMPPProviderManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DAD761FE2942B005C247A /* XMPPProviderManagerTests.swift */; };
+		B19DAD791FE2942B005C247A /* XMPPProviderManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1CFC3881FD84E4D003A9C17 /* XMPPProviderManager.framework */; };
+		B19DAD801FE2980D005C247A /* TimeExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DAD7F1FE2980D005C247A /* TimeExt.swift */; };
+		B19DAD821FE2AEF8005C247A /* UserdataExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19DAD811FE2AEF8005C247A /* UserdataExt.swift */; };
 		B1CFC38D1FD84E4D003A9C17 /* XMPPProviderManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B1CFC38B1FD84E4D003A9C17 /* XMPPProviderManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B1CFC3981FD84E9C003A9C17 /* XMPPProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CFC3931FD84E9B003A9C17 /* XMPPProviderExtension.swift */; };
 		B1CFC3991FD84E9C003A9C17 /* XMPPProviderManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CFC3941FD84E9C003A9C17 /* XMPPProviderManagerDelegate.swift */; };
 		B1CFC39A1FD84E9C003A9C17 /* XMPPProviderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CFC3951FD84E9C003A9C17 /* XMPPProviderManager.swift */; };
 		B1CFC39B1FD84E9C003A9C17 /* ProviderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CFC3961FD84E9C003A9C17 /* ProviderItem.swift */; };
 		B1CFC39C1FD84E9C003A9C17 /* XMPPProviderManager+XMPPStreamDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CFC3971FD84E9C003A9C17 /* XMPPProviderManager+XMPPStreamDelegate.swift */; };
+		EF00B34E70600BE5A43E9CFA /* Pods_XMPPProviderManagerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0C27ECC9C2C30A560D45A4 /* Pods_XMPPProviderManagerTests.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B19DAD7A1FE2942B005C247A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B1CFC37F1FD84E4D003A9C17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B1CFC3871FD84E4D003A9C17;
+			remoteInfo = XMPPProviderManager;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		05520A675D3F663920F1D2D5 /* Pods_XMPPProviderManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMPPProviderManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FB30F29D9BCCC59D28F18C /* Pods-XMPPProviderManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPProviderManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPProviderManager/Pods-XMPPProviderManager.release.xcconfig"; sourceTree = "<group>"; };
 		2E9D4D06A119C2F87AAD2E87 /* Pods-XMPPProviderManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPProviderManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPProviderManager/Pods-XMPPProviderManager.debug.xcconfig"; sourceTree = "<group>"; };
+		5E13EDE2052FF51B818F06CB /* Pods-XMPPProviderManagerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPProviderManagerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPProviderManagerTests/Pods-XMPPProviderManagerTests.release.xcconfig"; sourceTree = "<group>"; };
+		B19DAD741FE2942B005C247A /* XMPPProviderManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPProviderManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B19DAD761FE2942B005C247A /* XMPPProviderManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMPPProviderManagerTests.swift; sourceTree = "<group>"; };
+		B19DAD781FE2942B005C247A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B19DAD7F1FE2980D005C247A /* TimeExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeExt.swift; sourceTree = "<group>"; };
+		B19DAD811FE2AEF8005C247A /* UserdataExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserdataExt.swift; sourceTree = "<group>"; };
 		B1CFC3881FD84E4D003A9C17 /* XMPPProviderManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XMPPProviderManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1CFC38B1FD84E4D003A9C17 /* XMPPProviderManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XMPPProviderManager.h; sourceTree = "<group>"; };
 		B1CFC38C1FD84E4D003A9C17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -28,9 +49,20 @@
 		B1CFC3951FD84E9C003A9C17 /* XMPPProviderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMPPProviderManager.swift; sourceTree = "<group>"; };
 		B1CFC3961FD84E9C003A9C17 /* ProviderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderItem.swift; sourceTree = "<group>"; };
 		B1CFC3971FD84E9C003A9C17 /* XMPPProviderManager+XMPPStreamDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XMPPProviderManager+XMPPStreamDelegate.swift"; sourceTree = "<group>"; };
+		D37AAEB805E8DF316E397419 /* Pods-XMPPProviderManagerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPProviderManagerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPProviderManagerTests/Pods-XMPPProviderManagerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA0C27ECC9C2C30A560D45A4 /* Pods_XMPPProviderManagerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMPPProviderManagerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B19DAD711FE2942B005C247A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B19DAD791FE2942B005C247A /* XMPPProviderManager.framework in Frameworks */,
+				EF00B34E70600BE5A43E9CFA /* Pods_XMPPProviderManagerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1CFC3841FD84E4D003A9C17 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,14 +79,28 @@
 			children = (
 				2E9D4D06A119C2F87AAD2E87 /* Pods-XMPPProviderManager.debug.xcconfig */,
 				10FB30F29D9BCCC59D28F18C /* Pods-XMPPProviderManager.release.xcconfig */,
+				D37AAEB805E8DF316E397419 /* Pods-XMPPProviderManagerTests.debug.xcconfig */,
+				5E13EDE2052FF51B818F06CB /* Pods-XMPPProviderManagerTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B19DAD751FE2942B005C247A /* XMPPProviderManagerTests */ = {
+			isa = PBXGroup;
+			children = (
+				B19DAD761FE2942B005C247A /* XMPPProviderManagerTests.swift */,
+				B19DAD781FE2942B005C247A /* Info.plist */,
+				B19DAD7F1FE2980D005C247A /* TimeExt.swift */,
+				B19DAD811FE2AEF8005C247A /* UserdataExt.swift */,
+			);
+			path = XMPPProviderManagerTests;
 			sourceTree = "<group>";
 		};
 		B1CFC37E1FD84E4D003A9C17 = {
 			isa = PBXGroup;
 			children = (
 				B1CFC38A1FD84E4D003A9C17 /* XMPPProviderManager */,
+				B19DAD751FE2942B005C247A /* XMPPProviderManagerTests */,
 				B1CFC3891FD84E4D003A9C17 /* Products */,
 				40CF1A93ADDFAA0593DF6EA8 /* Pods */,
 				F52AE2C04199E029ADCFEEFA /* Frameworks */,
@@ -65,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				B1CFC3881FD84E4D003A9C17 /* XMPPProviderManager.framework */,
+				B19DAD741FE2942B005C247A /* XMPPProviderManagerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				05520A675D3F663920F1D2D5 /* Pods_XMPPProviderManager.framework */,
+				FA0C27ECC9C2C30A560D45A4 /* Pods_XMPPProviderManagerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -105,6 +153,27 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B19DAD731FE2942B005C247A /* XMPPProviderManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B19DAD7C1FE2942B005C247A /* Build configuration list for PBXNativeTarget "XMPPProviderManagerTests" */;
+			buildPhases = (
+				719D7200A144ADF1CCBAAB71 /* [CP] Check Pods Manifest.lock */,
+				B19DAD701FE2942B005C247A /* Sources */,
+				B19DAD711FE2942B005C247A /* Frameworks */,
+				B19DAD721FE2942B005C247A /* Resources */,
+				2E0A941F0CC0DD2A1606F6A6 /* [CP] Embed Pods Frameworks */,
+				AD66969EA845E14B3B762F4A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B19DAD7B1FE2942B005C247A /* PBXTargetDependency */,
+			);
+			name = XMPPProviderManagerTests;
+			productName = XMPPProviderManagerTests;
+			productReference = B19DAD741FE2942B005C247A /* XMPPProviderManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B1CFC3871FD84E4D003A9C17 /* XMPPProviderManager */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B1CFC3901FD84E4D003A9C17 /* Build configuration list for PBXNativeTarget "XMPPProviderManager" */;
@@ -131,9 +200,14 @@
 		B1CFC37F1FD84E4D003A9C17 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Luca Becchetti";
 				TargetAttributes = {
+					B19DAD731FE2942B005C247A = {
+						CreatedOnToolsVersion = 9.0.1;
+						ProvisioningStyle = Automatic;
+					};
 					B1CFC3871FD84E4D003A9C17 = {
 						CreatedOnToolsVersion = 9.0.1;
 						LastSwiftMigration = 0900;
@@ -154,11 +228,19 @@
 			projectRoot = "";
 			targets = (
 				B1CFC3871FD84E4D003A9C17 /* XMPPProviderManager */,
+				B19DAD731FE2942B005C247A /* XMPPProviderManagerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B19DAD721FE2942B005C247A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1CFC3861FD84E4D003A9C17 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -169,6 +251,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2E0A941F0CC0DD2A1606F6A6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-XMPPProviderManagerTests/Pods-XMPPProviderManagerTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/KissXML/KissXML.framework",
+				"${BUILT_PRODUCTS_DIR}/XMPPFramework/XMPPFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/libidn/libidn.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KissXML.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XMPPFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libidn.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMPPProviderManagerTests/Pods-XMPPProviderManagerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3F04A923CE544C100A5697B1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -185,6 +293,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		719D7200A144ADF1CCBAAB71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-XMPPProviderManagerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD66969EA845E14B3B762F4A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMPPProviderManagerTests/Pods-XMPPProviderManagerTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF1FB89EDFD0F8706EF44D78 /* [CP] Copy Pods Resources */ = {
@@ -205,6 +346,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B19DAD701FE2942B005C247A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B19DAD821FE2AEF8005C247A /* UserdataExt.swift in Sources */,
+				B19DAD801FE2980D005C247A /* TimeExt.swift in Sources */,
+				B19DAD771FE2942B005C247A /* XMPPProviderManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B1CFC3831FD84E4D003A9C17 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,7 +370,45 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B19DAD7B1FE2942B005C247A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B1CFC3871FD84E4D003A9C17 /* XMPPProviderManager */;
+			targetProxy = B19DAD7A1FE2942B005C247A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		B19DAD7D1FE2942B005C247A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D37AAEB805E8DF316E397419 /* Pods-XMPPProviderManagerTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3NJYMZCH8Y;
+				INFOPLIST_FILE = XMPPProviderManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Frind.XMPPProviderManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B19DAD7E1FE2942B005C247A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5E13EDE2052FF51B818F06CB /* Pods-XMPPProviderManagerTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3NJYMZCH8Y;
+				INFOPLIST_FILE = XMPPProviderManagerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Frind.XMPPProviderManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		B1CFC38E1FD84E4D003A9C17 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -383,6 +572,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B19DAD7C1FE2942B005C247A /* Build configuration list for PBXNativeTarget "XMPPProviderManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B19DAD7D1FE2942B005C247A /* Debug */,
+				B19DAD7E1FE2942B005C247A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B1CFC3821FD84E4D003A9C17 /* Build configuration list for PBXProject "XMPPProviderManager" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

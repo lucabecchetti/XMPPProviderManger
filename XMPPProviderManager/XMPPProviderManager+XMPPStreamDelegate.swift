@@ -14,6 +14,25 @@ extension XMPPProviderManager : XMPPStreamDelegate {
     
     public func xmppStream(_ sender: XMPPStream, didReceive message: XMPPMessage) {
         
+        /// Parse message
+        let parsedExt = parseReceivedMessage(sender, didReceive: message)
+        
+        /// If we found extensions, notifies the delegate
+        if parsedExt.count > 0{
+            delegateQueue?.async {
+                self.delegate?.xmppProviderManager(self, didParse: ProviderItem(node: message, extensions: parsedExt))
+            }
+        }
+        
+    }
+    
+    /// Function to parse a received message
+    ///
+    /// - Parameters:
+    ///   - sender: XMPPStream
+    ///   - message: XMPPMessage
+    /// - Returns: [XMPPProviderExtension]
+    public func parseReceivedMessage(_ sender: XMPPStream, didReceive message: XMPPMessage) -> [XMPPProviderExtension]{
         /// Array to store parsed extensions
         var parsedExt : [XMPPProviderExtension] = [XMPPProviderExtension]()
         
@@ -21,7 +40,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
         if XMPPPubSub.isPubSubMessage(message){
             
             if let event = message.forName("event"), let items: DDXMLElement = event.forName("items"), let children = items.children {
-
+                
                 /// Find <message> node inside event -> items -> item
                 for child in children{
                     if let messageChild = child.children?.filter({ (childnode) -> Bool in
@@ -34,7 +53,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
                             let msg = XMPPMessage.init(from: ch as! DDXMLElement)
                             /// Make sure i'm not sender
                             guard !isMine(message: msg, sender: sender) else{
-                                return
+                                continue
                             }
                             
                             if let ex = getExt(fromMessage: msg){
@@ -52,7 +71,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
             
             /// Make sure i'm not sender
             guard !isMine(message: message, sender: sender) else{
-                return
+                return []
             }
             
             if let ex = getExt(fromMessage: message){
@@ -62,14 +81,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
             }
             
         }
-        
-        /// If we found extensions, notifies the delegate
-        if parsedExt.count > 0{
-            delegateQueue?.async {
-                self.delegage?.xmppProviderManager(self, didParse: ProviderItem(node: message, extensions: parsedExt))
-            }
-        }
-        
+        return parsedExt
     }
     
     /// Check if i am a sender of message, usefull for pubsub message that are sent to sender

@@ -105,53 +105,73 @@ To manage a custom tag, you have to create a class that represent it, this needs
 
 ```xml
    <message id="111" type="chat" from="xxx@node0.frind.it" to="yyy@node0.frind.it">
-     <person name="jhon" age="31">
+     <userdata phone="+1111111" picUrl="http://www.pic.com" displayName="ProviderTest"></userdata>
    </message>
 ```
 
-To manage `<person/>` tag, create this class:
+To manage `<userdata/>` tag, create this class:
 
 ```swift
-class Person : : XMPPProviderExtension{
+class UserdataExt : NSObject, XMPPProviderExtension{
     
-    static var nodename     : String = "person"
-    static var namespace    : String = ""
+    static var nodename     : String     = "userdata"
+    static var namespace    : String    = ""
     var providerNode        : XMPPMessage?
     var fromJid             : XMPPJID?
     
-    /// Id of readed message
-    var name : String?
-    var age  : String?
+    /// Fields to describe user data
+    var phone       : String?
+    var displayName : String?
+    var picUrl      : String?
     
-    /// Initialize class based on message ID
+    /// Initialize provider
     ///
-    /// - Parameter id: String
-    public init(withMessageId id : String){
+    /// - Parameters:
+    ///   - phone: User phone number
+    ///   - displayName: User displayName
+    ///   - picUrl: User picUrl
+    public init(phone:String?, displayName : String?, picUrl : String?){
         
-        self.messageID = id
+        super.init()
+        self.phone          = phone
+        self.displayName    = displayName
+        self.picUrl         = picUrl
         
     }
     
     static func parse(node: XMPPMessage, parentNode parent: XMPPMessage?) -> XMPPProviderExtension? {
         
-        guard node.name! == XMPPReadStateProvider.nodename else {
-            DEBUGGER.error("Missing node <read> while parsing")
+        guard node.name! == UserdataExt.nodename else {
+            print("Missing node <userdata> while parsing")
             return nil
         }
         
-        if let messageID: String = node.attribute(forName: "id")?.stringValue {
-            return XMPPReadStateProvider(withMessageId: messageID)
-        }else{
-            return nil
+        var phoneNumber = ""
+        var displayName = "unknown"
+        var picUrl      = ""
+        
+        if let phn: String = node.attribute(forName: "phone")?.stringValue {
+            phoneNumber = phn
         }
+        if let dispname: String = node.attribute(forName: "displayName")?.stringValue {
+            displayName = dispname
+        }
+        if let pi: String = node.attribute(forName: "picUrl")?.stringValue {
+            picUrl = pi
+        }
+        
+        return UserdataExt(phone: phoneNumber, displayName: displayName, picUrl: picUrl)
         
     }
     
     func toXML() -> XMPPMessage {
         
-        let read = DDXMLElement(name: XMPPReadStateProvider.nodename)
-        read.addAttribute(withName: "id", objectValue: messageID!)
-        return XMPPMessage.init(from: read)
+        let userdata = DDXMLElement(name: UserdataExt.nodename)
+        userdata.addAttribute(withName: "phone", objectValue: phone ?? "")
+        userdata.addAttribute(withName: "displayName", objectValue: displayName ?? "")
+        userdata.addAttribute(withName: "picUrl", objectValue: picUrl ?? "")
+        
+        return XMPPMessage.init(from: userdata)
         
     }
     

@@ -73,10 +73,11 @@ Then create an instance for this library and set a delegate:
 ```swift
 class myXmppManage{
 
-... initialization of XMPPFramework ...
+	... initialization of XMPPFramework ...
 
-let xmppProviderManager = XMPPProviderManager()
-xmppProviderManager?.delegage = self
+	let xmppProviderManager = XMPPProviderManager()
+	xmppProviderManager?.activate(xmppStream: xmppStream!, delegateQueue: xmppHandlingQ)
+	xmppProviderManager?.delegage = self
 
 }
 ```
@@ -104,9 +105,9 @@ extension myXmppManage : XMPPProviderManagerDelegate{
 To manage a custom tag, you have to create a class that represent it, this needs to implement: `XMPPProviderExtension` protocol, you have to create a class for each tag you want to manage, here an example, immagine this stanza:
 
 ```xml
-   <message id="111" type="chat" from="xxx@node0.frind.it" to="yyy@node0.frind.it">
+<message id="111" type="chat" from="xxx@node0.frind.it" to="yyy@node0.frind.it">
      <userdata phone="+1111111" picUrl="http://www.pic.com" displayName="ProviderTest"></userdata>
-   </message>
+</message>
 ```
 
 To manage `<userdata/>` tag, create this class:

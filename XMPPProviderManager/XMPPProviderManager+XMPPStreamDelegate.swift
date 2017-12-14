@@ -92,9 +92,16 @@ extension XMPPProviderManager : XMPPStreamDelegate {
     /// - Returns: Bool
     fileprivate func isMine(message:XMPPMessage, sender : XMPPStream) -> Bool{
         
-        guard let my = sender.myJID?.user, let send = message.from?.user else {
+        guard let my = sender.myJID?.user, var send = message.from?.user else {
             return false
         }
+        /// For conference message (MUC) needed jid is a receiver, not sender
+        if let _ = message.from?.full.range(of: "@conference"){
+            if let res = message.to?.user{
+                send = res
+            }
+        }
+        
         
         return my == send
     }

@@ -84,8 +84,7 @@ open class XMPPProviderManager : NSObject{
             /// Iterate names and look for extensions
             for nm in name{
                 for element in message.elements(forName: nm){
-                    let mes = XMPPMessage(from: element)
-                    if let extesionParsed = ext.parse(node: mes, parentNode: message){
+                    if let mes = XMPPMessage(from: element), let extesionParsed = ext.parse(node: mes, parentNode: message){
                         extesionParsed.providerNode = mes
                         extensions.append(extesionParsed)
                     }

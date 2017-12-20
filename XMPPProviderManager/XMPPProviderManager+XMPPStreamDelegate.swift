@@ -50,18 +50,20 @@ extension XMPPProviderManager : XMPPStreamDelegate {
                         for ch in messageChild{
                             
                             /// Build message
-                            let msg = XMPPMessage.init(from: ch as! DDXMLElement)
-                            /// Make sure i'm not sender
-                            guard !isMine(message: msg, sender: sender) else{
-                                continue
+                            if let msg = XMPPMessage.init(from: ch as! DDXMLElement){
+                                /// Make sure i'm not sender
+                                guard !isMine(message: msg, sender: sender) else{
+                                    continue
+                                }
+                                
+                                if let ex = getExt(fromMessage: msg){
+                                    ex.forEach({ (_ext) in
+                                        _ext.providerNode = XMPPMessage.init(from: items)
+                                        parsedExt.append(_ext)
+                                    })
+                                }
                             }
                             
-                            if let ex = getExt(fromMessage: msg){
-                                ex.forEach({ (_ext) in
-                                    _ext.providerNode = XMPPMessage.init(from: items)
-                                    parsedExt.append(_ext)
-                                })
-                            }
                         }
                     }
                 }
@@ -92,13 +94,15 @@ extension XMPPProviderManager : XMPPStreamDelegate {
     /// - Returns: Bool
     fileprivate func isMine(message:XMPPMessage, sender : XMPPStream) -> Bool{
         
-        guard let my = sender.myJID?.user, var send = message.from?.user else {
+        guard let my = sender.myJID?.user, var send = message.from().user else {
             return false
         }
-        /// For conference message (MUC) needed jid is a receiver, not sender
-        if let _ = message.from?.full.range(of: "@conference"){
-            if let res = message.to?.user{
-                send = res
+        /// For conference message (MUC), from attribute has this form:
+        /// 18261@conference.node0.frind.it/419938e9-767c-11e6-9755-0e27c70eabb1@node0.frind.it
+        /// the real sender is the resource of JID, the string after /
+        if let _ = message.from().full().range(of: "@conference"){
+            if let resource = message.from().resource{
+                send = resource
             }
         }
         
@@ -113,7 +117,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
     fileprivate func getExt(fromMessage message : XMPPMessage) -> [XMPPProviderExtension]?{
         
         /// Check if we are receiving an error, we do not want to parse it
-        guard !message.isErrorMessage else{
+        guard !message.isErrorMessage() else{
             return nil
         }
         
@@ -133,7 +137,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
                 
                 /// Parse extesion
                 let elementChild = XMPPMessage.init(from: child as! DDXMLElement)
-                if let extesionParsed = ext?.parse(node: elementChild, parentNode: message){
+                if let extesionParsed = ext?.parse(node: elementChild!, parentNode: message){
                     
                     /// Get sender JID
                     if let from: String = message.attribute(forName: "from")?.stringValue, let jid = XMPPJID.init(string: from) {

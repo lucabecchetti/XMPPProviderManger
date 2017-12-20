@@ -24,7 +24,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   XMPPFramework:
-    :commit: b94ab74abca8c40d82db7e2de48a9915ac7f69c4
+    :commit: 8f1c53ab2ad89e58082d09a6e38b2e846ed02329
     :git: http://gitrepo.frind.it/frind/XMPPFramework
 
 SPEC CHECKSUMS:
@@ -32,7 +32,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 3c8c74683302f9012bb168e1c4b7ae3c0b558431
   KissXML: 1c1eeeb6b94e4522cd2f2373e5d0d03c9227738f
   libidn: 90fc1a62b60288dcf543f13f4ebca913f17d829f
-  XMPPFramework: 4da81686f5ca2c107a8d215ecbeb50e2708b3e8c
+  XMPPFramework: 59af6c0bf4a8a946b3feb6b388006b3ad6406343
 
 PODFILE CHECKSUM: 0fe0cfb0077c3ea5407174f7ed168f499d0eb399
 

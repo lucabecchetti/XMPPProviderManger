@@ -17,7 +17,7 @@ During develop of app that include wonderfull [XMPPFramework](https://github.com
 ## Main features
 Here's a highlight of the main features you can find in XMPPProviderManager:
 
-* **Parse custom tag inside message**
+* **Parse custom tags inside message**
 * **Parse message inside items** for message sent in XMPPPubSub.
 * **Support children nodes** You can parse infinity levels of children
   
@@ -99,7 +99,7 @@ extension myXmppManage : XMPPProviderManagerDelegate{
         
         /// Try to extract and cast extension
         let myObj = item.extensions.first(where: { (ext) -> Bool in return ext is MyObj })
-	}
+	
 
 }
 ```

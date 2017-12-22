@@ -1,3 +1,4 @@
+![XMPPProviderManager](logo.png)
 # XMPPProviderManager - A lightweight manager for received stanzas
 
 [![Version](https://img.shields.io/badge/pod-0.1.0-blue.svg)](https://cocoapods.org/pods/InAppNotify) [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://cocoapods.org/pods/InAppNotify) [![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)](https://cocoapods.org/pods/InAppNotify) [![Swift3](https://img.shields.io/badge/swift4-compatible-brightgreen.svg)](https://cocoapods.org/pods/InAppNotify)

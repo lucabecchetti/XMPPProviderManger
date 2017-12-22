@@ -95,6 +95,9 @@ extension myXmppManage : XMPPProviderManagerDelegate{
         item.extensions.forEach { (ext) in
             print(String(describing: type(of:ext)))
         }
+        
+        /// Try to extract and cast extension
+        let myObj = item.extensions.first(where: { (ext) -> Bool in return ext is MyObj })
 	}
 
 }
@@ -179,6 +182,62 @@ class UserdataExt : NSObject, XMPPProviderExtension{
     
 }
 ```
+
+###Usefull method to read attributes from node
+If you have to read and parse many string attributes of a node, inside a parse method of you extension, you can use this usefull method:
+
+```swift
+/// Find needed attributes
+var fields : [String : String?] = [
+	"field1" : nil, 
+	"field2" : nil,
+	"field3" : nil,
+	"field4" : nil,
+	"field5" : nil
+]
+
+do{
+   try XMPPProviderManager.find(attributes: &fields, inNode: XMPPMessage.init(from: node))
+   
+   ///Access attributes:
+   print(fields["field1"]!!)
+   
+}catch let err{
+	print(err)
+}
+```
+
+### Parse children attributes
+Immagine to have this structure:
+
+```xml
+<message id="111" type="chat" from="xxx@node0.frind.it" to="yyy@node0.frind.it">
+     <People>
+     	<Person name="" />
+     	<Person name="" />
+     </people>
+</message>
+```
+
+and suppose to have the correct extension class for each node: People and Person, provider manager will parse only first level node `<people>`, inside a People class parse method, you can get all `Person` extensions:
+
+```swift
+class UserdataExt : NSObject, XMPPProviderExtension{
+
+	.....
+	
+	static func parse(node: XMPPMessage, parentNode parent: XMPPMessage?) -> XMPPProviderExtension? {
+
+      /// Extract extesions People
+      let people = manager!.getExtensions(fromMessage: parent!, type: Person.self).map { $0 as! Person }
+      
+      print("Found \(people.count) extension")
+	
+	}
+
+}
+```
+
 
 ## Projects using XMPPProviderManager
 

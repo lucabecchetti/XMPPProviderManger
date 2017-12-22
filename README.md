@@ -184,8 +184,8 @@ class UserdataExt : NSObject, XMPPProviderExtension{
 }
 ```
 
-### Usefull method to read attributes from node
-If you have to read and parse many string attributes of a node, inside a parse method of you extension, you can use this usefull method:
+### Useful method to read attributes from node
+If you have to read and parse many string attributes of a node, inside a parse method of you extension, you can use this Useful method:
 
 ```swift
 /// Find needed attributes

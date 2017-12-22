@@ -18,10 +18,10 @@ s.author = { "Luca Becchetti" => "luca.becchetti@brokenice.it" }
 
 
 # 5 - Replace this URL with your own Github page's URL (from the address bar)
-s.homepage = "http://gitrepo.frind.it/Becchetti/xmppprovidermanager"
+s.homepage = "http://gitrepo.frind.it/Becchetti/XMPPProviderManger"
 
 # 6 - Replace this URL with your own Git URL from "Quick Setup"
-s.source = { :git => "http://gitrepo.frind.it/Becchetti/xmppprovidermanager.git", :tag => "#{s.version}"}
+s.source = { :git => "https://github.com/lucabecchetti/XMPPProviderManger.git", :tag => "#{s.version}"}
 
 # 7
 s.dependency 'XMPPFramework'

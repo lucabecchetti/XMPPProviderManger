@@ -184,7 +184,7 @@ class UserdataExt : NSObject, XMPPProviderExtension{
 }
 ```
 
-###Usefull method to read attributes from node
+### Usefull method to read attributes from node
 If you have to read and parse many string attributes of a node, inside a parse method of you extension, you can use this usefull method:
 
 ```swift
@@ -208,7 +208,7 @@ do{
 }
 ```
 
-### Parse children attributes
+### Parse children extensions
 Immagine to have this structure:
 
 ```xml
@@ -229,17 +229,22 @@ class UserdataExt : NSObject, XMPPProviderExtension{
 	
 	static func parse(node: XMPPMessage, parentNode parent: XMPPMessage?) -> XMPPProviderExtension? {
 
-      /// Extract extesions People
-      let people = manager!.getExtensions(fromMessage: parent!, type: Person.self).map { $0 as! Person }
-      
-      print("Found \(people.count) extension")
-	
+		/// Extract extesions People
+		let people = manager!.getExtensions(fromMessage: parent!, type: Person.self).map { $0 as! Person }
+
+		print("Found \(people.count) extension")
+
 	}
 
 }
 ```
 
+### Sending extension
+To send an extension, you can simply do:
 
+```swift
+xmppStream!.send(UserdataExt(phone:"+11111", displayName : "name", picUrl : nil).toXML())
+```
 ## Projects using XMPPProviderManager
 
 - Frind - [www.frind.it](https://www.frind.it) 

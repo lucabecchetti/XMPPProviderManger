@@ -6,7 +6,7 @@ s.ios.deployment_target = '9.0'
 s.name = "XMPPProviderManager"
 s.summary = "Provider manager to parse and send class through XMPPFramework"
 s.requires_arc = true
-
+s.static_framework = true
 # 2
 s.version = "0.1.0"
 

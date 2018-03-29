@@ -37,7 +37,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
         var parsedExt : [XMPPProviderExtension] = [XMPPProviderExtension]()
         
         /// For pub sub check for message inside items
-        if XMPPPubSub.isPubSubMessage(message){
+        if message.elements(forName: "event").count > 0, message.elements(forXmlns: XMLNS_PUBSUB_EVENT).count > 0{
             
             if let event = message.forName("event"), let items: DDXMLElement = event.forName("items"), let children = items.children {
                 
@@ -94,7 +94,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
     /// - Returns: Bool
     fileprivate func isMine(message:XMPPMessage, sender : XMPPStream) -> Bool{
         
-        guard let my = sender.myJID?.user, var send = message.from().user else {
+        guard let my = sender.myJID?.user, message.from() != nil, var send = message.from().user else {
             return false
         }
         /// For conference message (MUC), from attribute has this form:

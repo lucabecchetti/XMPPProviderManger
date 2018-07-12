@@ -23,6 +23,9 @@ open class XMPPProviderManager : NSObject{
     /// Extensions queue
     internal var _extensions : [XMPPProviderExtension.Type] = [XMPPProviderExtension.Type]()
     
+    /// Node name where i want to download my message
+    public static var downloadMyMessagesForNodes : [String] = [String]()
+    
     /// Activate provider by register a delegate in XMPPStream
     ///
     /// - Parameters:

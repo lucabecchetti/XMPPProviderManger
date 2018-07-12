@@ -51,9 +51,12 @@ extension XMPPProviderManager : XMPPStreamDelegate {
                             
                             /// Build message
                             if let msg = XMPPMessage.init(from: ch as! DDXMLElement){
-                                /// Make sure i'm not sender
-                                guard !isMine(message: msg, sender: sender) else{
-                                    continue
+                        
+                                if !XMPPProviderManager.downloadMyMessagesForNodes.contains(items.attribute(forName: "node")!.stringValue!){
+                                    /// Make sure i'm not sender
+                                    guard !isMine(message: msg, sender: sender) else{
+                                        continue
+                                    }
                                 }
                                 
                                 if let ex = getExt(fromMessage: msg){
@@ -139,11 +142,7 @@ extension XMPPProviderManager : XMPPStreamDelegate {
                 let elementChild = XMPPMessage.init(from: child as! DDXMLElement)
                 if let extesionParsed = ext?.parse(node: elementChild!, parentNode: message){
                     
-                    /// Get sender JID
-                    if let from: String = message.attribute(forName: "from")?.stringValue, let jid = XMPPJID.init(string: from) {
-                        extesionParsed.fromJid = jid
-                    }
-                    
+                    extesionParsed.fromJid = message.from()
                     extesionParsed.providerNode = elementChild
                     
                     foundExt.append(extesionParsed)
